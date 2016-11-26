@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 
 /**
@@ -66,7 +67,23 @@ public class MainTester extends TestCase {
         System.out.println("compressed length:" + len1);
         System.out.println("original length:" + len2);
         System.out.println("compress ratio : " + formatter.format((double) len1 / len2 * 100) + "%");
+        System.out.println();
+        try {
+            String buf1 = new String(buf, "utf-8");
+            int len3 = buf1.length();
+            System.out.println("compressed length:" + len3);
+            System.out.println("Convert into compress ratio :" + formatter.format((double) len3 / testBuf.length() * 100) + "%");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Finish Running test2==================");
     }
 
+
+    @Test
+    public void testRun3() {
+//        fail();
+
+    }
 }

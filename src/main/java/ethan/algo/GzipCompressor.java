@@ -1,11 +1,10 @@
 package ethan.algo;
 
+import org.apache.commons.compress.compressors.CompressorException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Created by minxfeng on 2016/11/27.
@@ -21,10 +20,13 @@ public class GzipCompressor implements ICompress {
         try {
             byteArrayOutputStream = new ByteArrayOutputStream();
             zipOutputStream = new GZIPOutputStream(byteArrayOutputStream);
+//            CompressorStreamFactory factory=new CompressorStreamFactory();
+//            zipOutputStream= factory.createCompressorOutputStream("gz",byteArrayOutputStream);
 //            zipOutputStream.putNextEntry(new ZipEntry("default "));
             zipOutputStream.write(strbuf.getBytes());
 //            zipOutputStream.closeEntry();
-            zipOutputStream.finish();
+//            zipOutputStream.finish();
+            zipOutputStream.close();
             arrayOfBytes = byteArrayOutputStream.toByteArray();
         } catch (IOException exce) {
             arrayOfBytes = null;
