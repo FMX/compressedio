@@ -10,7 +10,10 @@ public class CompressedTcpClient {
     public CompressedTcpClient(String host, int port) {
         this.targetHost = host;
         this.targetPort = port;
+
     }
+
+
 
 
 

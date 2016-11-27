@@ -9,7 +9,7 @@ import java.util.zip.ZipInputStream;
 /**
  * Created by minxfeng on 2016/11/26.
  */
-public class ZipDecompress implements IDecompress{
+public class ZipDecompress implements IDecompress {
     public String decompress(byte[] paramArrayOfByte) {
         if (paramArrayOfByte == null)
             return null;
@@ -21,7 +21,6 @@ public class ZipDecompress implements IDecompress{
             byteArrayOutputStream = new ByteArrayOutputStream();
             byteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
             zipInputStream = new ZipInputStream(byteArrayInputStream);
-            ZipEntry localZipEntry = zipInputStream.getNextEntry();
             byte[] arrayOfByte = new byte[1024];
             int i = -1;
             while ((i = zipInputStream.read(arrayOfByte)) != -1)
